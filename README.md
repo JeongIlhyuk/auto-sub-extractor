@@ -1,21 +1,48 @@
-# auto-sub-extractor
+# Auto Sub Extractor
 
-## Git LFS 사용법
+영상에서 자막을 자동으로 추출하는 스크립트입니다.
 
-이 프로젝트는 큰 파일(mp4, wav, ggml-base.bin)을 포함하므로 Git LFS를 사용합니다.
+## 사용 환경
 
-### 1️⃣ Git LFS 설치 (한 번만)
-git lfs install
+* Windows
+* yt-dlp 설치 필요
+* ffmpeg 설치 필요
+* whisper-cli 및 ggml 모델 필요
 
-### 2️⃣ LFS로 관리할 파일 지정 (한 번만)
-git lfs track "*.mp4"
-git lfs track "*.wav"
-git lfs track "ggml-base.bin"
+## 사용법
 
-### 3️⃣ 파일 커밋 & 푸시
-파일을 추가하고 커밋한 후 푸시:
-git add .
-git commit -m "Add files via LFS"
-git push origin main
+1. **영상 링크 입력**
 
-⚠️ 주의: VS Code GUI에서 푸시하면 LFS 파일이 제대로 올라가지 않을 수 있으므로 터미널에서 직접 푸시 권장.
+```bat
+@echo off
+echo 링크를 붙여넣으세요 (Ctrl+V):
+set /p url=
+```
+
+2. **파일명 및 자막 폴더 설정**
+
+```bat
+set today=%date%
+set timestamp=%time:~0,2%%time:~3,2%%time:~6,2%
+set timestamp=%timestamp: =0%
+set filename=lecture_%today:~2,2%%today:~5,2%%today:~8,2%_%timestamp%
+set subtitle_folder=subtitles
+if not exist %subtitle_folder% mkdir %subtitle_folder%
+```
+
+3. **영상 다운로드, 음성 추출, 자막 생성**
+
+```bat
+yt-dlp -o "%filename%.mp4" "%url%"
+ffmpeg -i "%filename%.mp4" -ar 16000 -ac 1 "%filename%.wav"
+.\whisper-cli.exe -m ggml-base.bin -l ko "%filename%.wav" --output-txt -o "%subtitle_folder%\%filename%.txt"
+```
+
+4. **완료**
+
+* 생성된 자막은 `subtitles` 폴더 안에 저장됩니다.
+* 원본 영상은 삭제되지 않고 그대로 남습니다.
+
+---
+
+> **Tip:** 영상 파일과 자막 파일을 깃허브에 올릴 필요가 없으면 `.gitignore`에 확장자(`.mp4`, `.wav`, `.bin`)를 추가하세요.
