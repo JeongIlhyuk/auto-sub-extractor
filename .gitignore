@@ -2,3 +2,7 @@
 *.mp4
 *.wav
 ggml-base.bin
+ggml-large-v3.bin
+
+# subs 폴더 내의 모든 파일 무시
+subs/
