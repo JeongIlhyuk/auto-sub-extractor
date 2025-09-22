@@ -4,8 +4,9 @@
 ggml-base.bin
 ggml-large-v3.bin
 
-# subs 폴더 내의 모든 파일 무시
+# 자막 및 텍스트 파일들
 subs/
+*.txt
 
 # whisper 불필요한 실행 파일들
 bench.exe
@@ -28,6 +29,35 @@ ggml-base.dll
 ggml-cpu.dll
 ggml.dll
 whisper.dll
+
+# 임시 파일들
+*.tmp
+*.temp
+*.log
+*.bak
+*.backup
+*~
+
+# 시스템 파일들
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# 압축 파일들
+*.zip
+*.rar
+*.7z
+
+# Python 관련
+__pycache__/
+*.pyc
+*.pyo
+
+# 텍스트 에디터 임시 파일들
+*.swp
+*.swo
+.vscode/
+.idea/
 
 # 기타 불필요한 파일들
 *.pdb
