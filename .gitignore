@@ -6,3 +6,27 @@ ggml-large-v3.bin
 
 # subs 폴더 내의 모든 파일 무시
 subs/
+
+# whisper 불필요한 실행 파일들
+bench.exe
+command.exe
+main.exe
+quantize.exe
+stream.exe
+test-*.exe
+whisper-bench.exe
+whisper-command.exe
+whisper-server.exe
+whisper-stream.exe
+whisper-talk-llama.exe
+
+# whisper DLL 파일들
+SDL2.dll
+ggml-base.dll
+ggml-cpu.dll
+ggml.dll
+whisper.dll
+
+# 기타 불필요한 파일들
+*.pdb
+*.lib

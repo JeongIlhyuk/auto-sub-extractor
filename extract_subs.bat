@@ -19,8 +19,8 @@ yt-dlp -o "%filename%.mp4" "%url%"
 :: 오디오 추출
 ffmpeg -i "%filename%.mp4" -ar 16000 -ac 1 "%filename%.wav"
 
-:: 텍스트 변환 (whisper) - large-v3 모델 사용
-.\whisper-cli.exe -m ggml-large-v3.bin -l ko "%filename%.wav" --output-txt
+:: 텍스트 변환 (whisper) - 반복 문제 해결 파라미터 추가
+.\whisper-cli.exe -m ggml-large-v3.bin -l ko "%filename%.wav" --output-txt --temperature 0.2 --no-timestamps
 
 :: 생성된 텍스트 파일을 subs 폴더로 이동
 move "%filename%.wav.txt" "subs\%filename%.txt"
