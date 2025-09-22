@@ -19,6 +19,8 @@ whisper-command.exe
 whisper-server.exe
 whisper-stream.exe
 whisper-talk-llama.exe
+vad-speech-segments.exe
+wchess.exe
 
 # whisper DLL 파일들
 SDL2.dll
