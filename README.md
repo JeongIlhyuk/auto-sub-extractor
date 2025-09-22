@@ -31,34 +31,40 @@
 `extract_subs.bat` 파일에서 모델명만 변경:
 ```batch
 .\whisper-cli.exe -m [모델명] -l ko "%filename%.wav" --output-txt
-Whisper-CLI 주요 옵션
-성능 관련
-batch
+```
+## Whisper-CLI 주요 옵션
+### 성능 관련
+```batch
 --flash-attn          # GPU 가속 (RTX 4060 권장)
 --no-gpu             # GPU 비활성화
 --threads N          # CPU 스레드 수 (기본: 4)
 --processors N       # 프로세서 수 (기본: 1)
-품질 관련
-batch
+```
+### 품질 관련
+```batch
 --temperature N      # 샘플링 온도 (0-1, 기본: 0.2)
 --beam-size N        # 빔 서치 크기 (기본: 5)
 --best-of N          # 최선 후보 수 (기본: 5)
-출력 관련
-batch
+```
+### 출력 관련
+```batch
 --output-txt         # 텍스트 파일 출력
 --output-srt         # SRT 자막 파일 출력
 --output-vtt         # VTT 자막 파일 출력
 --no-timestamps      # 타임스탬프 제거
-언어/음성 처리
-batch
+```
+### 언어/음성 처리
+```batch
 -l ko               # 한국어 설정
 --translate         # 영어로 번역
 --diarize          # 화자 분리
-GPU 가속 설정
+```
+## GPU 가속 설정
 RTX 4060 사용 시 권장 설정:
 
-batch
+```batch
 .\whisper-cli.exe -m ggml-large-v3.bin -l ko "%filename%.wav" --output-txt --flash-attn --threads 8
+```
 예상 처리 시간 (RTX 4060 기준)
 50분 영상: 15-25분 처리
 GPU 가속 시: 10-15분 처리
