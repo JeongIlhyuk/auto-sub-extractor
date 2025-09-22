@@ -90,7 +90,7 @@ error: The system cannot find the file specified.
 ```
 error: unknown argument: -ngl
 ```
-→ --flash-attn 또는 --no-gpu 사용
+→ `--flash-attn` 또는 `--no-gpu` 사용
 
 ### 반복 텍스트 문제
 → `--temperature 0.2 --no-timestamps` 옵션 추가
