@@ -1,10 +1,3 @@
-Relevant chats
-1 result
-
-
-README.md 파일을 만들어드릴게요!
-
-markdown
 # YouTube 자막 추출기
 
 이 도구는 YouTube/강의 링크에서 영상을 다운로드하고 Whisper AI를 사용해 자막을 추출합니다.
